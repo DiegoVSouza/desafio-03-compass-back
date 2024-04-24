@@ -7,3 +7,5 @@ ENV POSTGRES_USER=postgres \
 EXPOSE 5432
 
 CMD ["postgres"]
+
+RUN echo "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";" >> /docker-entrypoint-initdb.d/init.sql
