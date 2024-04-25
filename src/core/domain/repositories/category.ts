@@ -22,7 +22,7 @@ export abstract class CategoryRepository
   abstract getAll(): Promise<Category[]>;
   abstract delete(id: string): Promise<void>;
   abstract update(
-    payload: Omit<AddCategoryDTO, 'id'>,
+    payload: AddCategoryDTO,
     id: string,
   ): Promise<Category>;
 }

@@ -1,3 +1,4 @@
+import { AddCategoryDTO } from '@/presentation/dtos/category/addCategory.dto';
 import { Category } from 'src/core/domain/models/category.entity';
 import { CategoryRepository } from 'src/core/domain/repositories/category';
 import { CategoryModelDTO } from 'src/presentation/dtos/category/categoryModel.dto';
@@ -6,13 +7,13 @@ import { Repository } from 'typeorm';
 export class CategoryTypeOrmRepository implements CategoryRepository {
   constructor(private readonly categoryRepository: Repository<Category>) { }
 
-  async create(payload: Omit<Category, 'id'>): Promise<Category> {
+  async create(payload: AddCategoryDTO): Promise<Category> {
     const category = this.categoryRepository.create(payload);
     return this.categoryRepository.save(category);
   }
-  
+
   async update(
-    payload: Omit<CategoryModelDTO, 'id'>,
+    payload: CategoryModelDTO,
     id: string,
   ): Promise<Category> {
     try {

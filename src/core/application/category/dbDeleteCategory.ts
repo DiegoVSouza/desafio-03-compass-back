@@ -10,9 +10,9 @@ export class DbDeleteCategory implements IDbDeleteCategoryRepository {
 
   async delete(id: string): Promise<void> {
     try {
-      const category = await this.categoryRepository.findById(id);
+      const alreadyExists = await this.categoryRepository.findById(id);
 
-      if (!category) {
+      if (!alreadyExists) {
         throw new BadRequestException(`Category not found`);
       }
 

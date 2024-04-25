@@ -1,15 +1,18 @@
 import { EntitySchema } from 'typeorm/entity-schema/EntitySchema';
-import { baseSchema } from '../base/base.schema';
 import { Category } from 'src/core/domain/models/category.entity';
-import { SchemasEnum } from '../../schema.enum';
+import { randomUUID } from 'crypto';
 
 export const CategorySchema = new EntitySchema<Category>({
-  schema: SchemasEnum.default,
   name: Category.name,
   target: Category,
   tableName: `categories`,
   columns: {
-    ...baseSchema,
+    id: {
+      type: 'uuid',
+      primary: true,
+      generated: true,
+      default: () => randomUUID()
+    },
     name: {
       type: 'varchar',
       nullable: false,
@@ -21,6 +24,21 @@ export const CategorySchema = new EntitySchema<Category>({
     description: {
       type: 'varchar',
       nullable: false,
+    },
+    created_at: {
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
+      nullable: false,
+    },
+    updated_at: {
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
+      nullable: false,
+    },
+    deleted_at: {
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
+      nullable: true,
     },
   },
 });

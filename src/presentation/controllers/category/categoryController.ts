@@ -8,18 +8,13 @@ import {
   Param,
   Post,
   Put,
-  UploadedFile,
-  UseGuards,
-  UseInterceptors,
 } from '@nestjs/common';
 import {
-  ApiBearerAuth,
   ApiBody,
   ApiConsumes,
   ApiOkResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { FileInterceptor } from '@nestjs/platform-express';
 import { CategoryModelDTO } from 'src/presentation/dtos/category/categoryModel.dto';
 import { AddCategoryDTO } from 'src/presentation/dtos/category/addCategory.dto';
 import { IDbListCategoryRepository } from 'src/core/domain/protocols/db/category/listCategoryRespository';
@@ -40,12 +35,12 @@ export class CategoryController {
 
   @Get()
   @ApiOkResponse({
-    description: 'Returns Categorys.',
+    description: 'Returns Categorys',
     status: HttpStatus.OK,
     type: CategoryModelDTO,
     isArray: true,
   })
-  @ApiBearerAuth()
+  // @ApiBearerAuth()
   async getAll(): Promise<CategoryModelDTO[]> {
     try {
       return await this.dbListCategory.getAll();
@@ -61,12 +56,11 @@ export class CategoryController {
       'Create a new category',
   })
   @ApiOkResponse({
-    description: 'Returns Categorys.',
+    description: 'Returns Category',
     status: HttpStatus.OK,
     type: CategoryModelDTO,
   })
-  @ApiConsumes('multipart/form-data')
-  @ApiBearerAuth()
+  // @ApiBearerAuth()
   async create(
     @Body() payload: AddCategoryDTO,
   ): Promise<CategoryModelDTO> {
@@ -82,11 +76,11 @@ export class CategoryController {
     type: AddCategoryDTO,
   })
   @ApiOkResponse({
-    description: 'Put success.',
+    description: 'Put Category',
     status: HttpStatus.OK,
     type: CategoryModelDTO,
   })
-  @ApiBearerAuth()
+  // @ApiBearerAuth()
   async update(
     @Param('id') id: string,
     @Body() payload: Omit<CategoryModelDTO, 'id'>,
@@ -100,10 +94,10 @@ export class CategoryController {
 
   @Delete(':id')
   @ApiOkResponse({
-    description: 'Delete success.',
+    description: 'Delete Category',
     status: HttpStatus.OK,
   })
-  @ApiBearerAuth()
+  // @ApiBearerAuth()
   async delete(@Param('id') id: string): Promise<void> {
     try {
       return await this.dbDeleteCategory.delete(id);

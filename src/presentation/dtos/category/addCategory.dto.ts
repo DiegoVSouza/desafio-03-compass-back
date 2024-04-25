@@ -15,8 +15,7 @@ export class AddCategoryDTO {
 
   @ApiProperty({
     type: 'string',
-    format: 'binary',
-    description: 'Image file',
+    description: 'Image link',
   })
   @IsNotEmpty()
   @IsString()
