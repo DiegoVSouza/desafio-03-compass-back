@@ -104,13 +104,19 @@ export class AddProductDTO {
   is_new: boolean = false; 
 
   @ApiProperty({
-    type: Array<AddAttributesDTO>,
-    example: Array<AddAttributesDTO>,
+    type: [AddAttributesDTO],
+    example: {
+      "qtd": 10,
+      "color": "green",
+      "size": "medium",
+      "image_link": "string"
+    },
     required: true,
   })
   @Expose()
   @IsNotEmpty()
   @ValidateNested()
+  @IsArray()
   attributes: Omit<AddAttributesDTO,'product_id'>[];
   
 
