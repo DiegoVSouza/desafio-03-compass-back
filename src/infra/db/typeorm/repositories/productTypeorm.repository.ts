@@ -69,8 +69,6 @@ export class ProductTypeOrmRepository implements ProductRepository {
     const number_of_products = await queryBuilder.getCount();
 
     const number_of_pages = Math.ceil(number_of_products / params.limit);
-
-    console.log("products",products.length)
     
     return { products, number_of_pages, number_of_products };
   }

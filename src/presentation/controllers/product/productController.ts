@@ -65,7 +65,6 @@ export class ProductController {
   // @ApiBearerAuth()
   async getAllPag(@Query() params): Promise<ProductPagModelDTO> {
     try {
-      console.log(params)
       return await this.dbListPagProduct.getAllPag(params);
     } catch (error) {
       throw new HttpException(error.response, error.status);
