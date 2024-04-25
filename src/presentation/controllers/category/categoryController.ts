@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import {
   ApiBody,
@@ -41,9 +42,9 @@ export class CategoryController {
     isArray: true,
   })
   // @ApiBearerAuth()
-  async getAll(): Promise<CategoryModelDTO[]> {
+  async getAll(@Query() params): Promise<CategoryModelDTO[]> {
     try {
-      return await this.dbListCategory.getAll();
+      return await this.dbListCategory.getAll(params);
     } catch (error) {
       throw new HttpException(error.response, error.status);
     }

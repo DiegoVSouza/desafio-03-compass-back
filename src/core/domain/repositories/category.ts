@@ -6,6 +6,7 @@ import { IDbDeleteCategoryRepository } from '../protocols/db/category/deleteCate
 import { IDbFindCategoryByNameRepository } from '../protocols/db/category/findCategorybyNameRepository';
 import { Category } from '../models/category.entity';
 import { AddCategoryDTO } from 'src/presentation/dtos/category/addCategory.dto';
+import { CategoryParamsDTO } from '@/presentation/dtos/category/categoryParams.dto';
 
 @Injectable()
 export abstract class CategoryRepository
@@ -19,7 +20,7 @@ export abstract class CategoryRepository
   abstract create(payload: AddCategoryDTO): Promise<Category>;
   abstract findById(id: string): Promise<Category>;
   abstract findByName(name: string): Promise<Category>;
-  abstract getAll(): Promise<Category[]>;
+  abstract getAll(params: CategoryParamsDTO): Promise<Category[]>;
   abstract delete(id: string): Promise<void>;
   abstract update(
     payload: AddCategoryDTO,

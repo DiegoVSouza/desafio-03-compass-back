@@ -1,4 +1,5 @@
 import { AddCategoryDTO } from '@/presentation/dtos/category/addCategory.dto';
+import { CategoryParamsDTO } from '@/presentation/dtos/category/categoryParams.dto';
 import { Category } from 'src/core/domain/models/category.entity';
 import { CategoryRepository } from 'src/core/domain/repositories/category';
 import { CategoryModelDTO } from 'src/presentation/dtos/category/categoryModel.dto';
@@ -40,8 +41,18 @@ export class CategoryTypeOrmRepository implements CategoryRepository {
     await this.categoryRepository.delete(id);
   }
 
-  async getAll(): Promise<Category[]> {
-    return this.categoryRepository.find();
+  async getAll(params: CategoryParamsDTO): Promise<Category[]> {
+    const queryBuilder = this.categoryRepository.createQueryBuilder('category');
+
+    if (params.id) {
+      queryBuilder.where('category.id = :id', { id: params.id });
+    }
+
+    if (params.limit) {
+      queryBuilder.take(params.limit);
+    }
+    
+    return await queryBuilder.getMany();
   }
 
 
