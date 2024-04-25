@@ -4,6 +4,9 @@ import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as basicAuth from 'express-basic-auth';
 import { ConfigService } from '@nestjs/config';
+import * as cors from 'cors';
+import { CategorySeedService } from './core/services/seeds/application/category.seed';
+var logger = require('morgan');
 
 async function bootstrap() {
   try {
@@ -36,6 +39,10 @@ async function bootstrap() {
       SwaggerModule.setup(swaggerRoute, application, document);
     };
 
+    app.use(cors());
+    app.use(logger('dev'));
+
+    const categorySeedService = app.get(CategorySeedService);
     app.useGlobalPipes(new ValidationPipe());
     setupSwagger(app);
 
