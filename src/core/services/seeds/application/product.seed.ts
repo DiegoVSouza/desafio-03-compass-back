@@ -17,11 +17,12 @@ export class ProductSeedService implements IProductService {
     ) { }
 
     async seedProducts(categories: Category[]) {
-        for (const category of categories) {
+            let e = 0
+            for (const category of categories) {
             for (let i = 0; i < 48; i++) {
                 const product = new Product();
                 product.category_id = category.id;
-                product.name = `Produto ${i + 1}`;
+                product.name = `Produto ${i + 1 + 48*e}`;
                 product.description = faker.lorem.sentence();
                 product.large_description = faker.lorem.paragraph();
                 product.price = faker.number.int({ min: 50, max: 500 });
@@ -44,6 +45,7 @@ export class ProductSeedService implements IProductService {
                     await this.attributesRepository.create(attribute);
                 }
             }
+            e++
         }
     }
 }
