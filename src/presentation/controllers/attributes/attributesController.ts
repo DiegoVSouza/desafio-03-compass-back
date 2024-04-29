@@ -73,7 +73,6 @@ export class AttributesController {
     status: HttpStatus.OK,
     type: AttributesModelDTO,
   })
-  // @ApiBearerAuth()
   async update(
     @Param('id') id: string,
     @Body() payload: Omit<AddAttributesDTO, 'id'>,
@@ -90,7 +89,6 @@ export class AttributesController {
     description: 'Delete Attributes.',
     status: HttpStatus.OK,
   })
-  // @ApiBearerAuth()
   async delete(@Param('id') id: string): Promise<void> {
     try {
       return await this.dbDeleteAttributes.delete(id);

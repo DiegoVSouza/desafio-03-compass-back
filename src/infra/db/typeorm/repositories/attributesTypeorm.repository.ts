@@ -28,7 +28,6 @@ export class AttributesTypeOrmRepository implements AttributesRepository {
 
       return save;
     } catch (error) {
-      console.log(error);
       throw new Error('Attributes not found');
     }
   }

@@ -26,7 +26,6 @@ export class DbAddCategory implements IDbAddCategoryRepository {
 
       return await this.categoryRepository.create(payload);
     } catch (error) {
-      console.log(error)
       throw error;
     }
 

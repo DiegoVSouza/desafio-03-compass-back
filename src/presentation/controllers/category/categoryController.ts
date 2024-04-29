@@ -41,7 +41,6 @@ export class CategoryController {
     type: CategoryModelDTO,
     isArray: true,
   })
-  // @ApiBearerAuth()
   async getAll(@Query() params): Promise<CategoryModelDTO[]> {
     try {
       return await this.dbListCategory.getAll(params);
@@ -61,7 +60,6 @@ export class CategoryController {
     status: HttpStatus.OK,
     type: CategoryModelDTO,
   })
-  // @ApiBearerAuth()
   async create(
     @Body() payload: AddCategoryDTO,
   ): Promise<CategoryModelDTO> {
@@ -81,7 +79,6 @@ export class CategoryController {
     status: HttpStatus.OK,
     type: CategoryModelDTO,
   })
-  // @ApiBearerAuth()
   async update(
     @Param('id') id: string,
     @Body() payload: Omit<CategoryModelDTO, 'id'>,
@@ -98,7 +95,6 @@ export class CategoryController {
     description: 'Delete Category',
     status: HttpStatus.OK,
   })
-  // @ApiBearerAuth()
   async delete(@Param('id') id: string): Promise<void> {
     try {
       return await this.dbDeleteCategory.delete(id);

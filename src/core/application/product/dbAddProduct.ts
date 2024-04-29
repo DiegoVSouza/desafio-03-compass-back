@@ -36,7 +36,6 @@ export class DbAddProduct implements IDbAddProductRepository {
       return product;
 
     } catch (error) {
-      console.log(error)
       throw error;
     }
   }

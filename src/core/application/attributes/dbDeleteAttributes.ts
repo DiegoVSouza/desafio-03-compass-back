@@ -15,7 +15,6 @@ export class DbDeleteAttributes implements IDbDeleteAttributesRepository {
       }
       await this.attributesRepository.delete(id);
     } catch (error) {
-      console.log('Error on deleting attribute:', error);
       throw error;
     }
 

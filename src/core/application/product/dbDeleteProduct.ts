@@ -15,7 +15,6 @@ export class DbDeleteProduct implements IDbDeleteProductRepository {
       }
       await this.productRepository.delete(id);
     } catch (error) {
-      console.log('Error on deleting product:', error);
       throw error;
     }
 

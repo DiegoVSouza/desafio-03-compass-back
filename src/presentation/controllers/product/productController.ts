@@ -46,7 +46,6 @@ export class ProductController {
     type: ProductModelDTO,
     isArray: true,
   })
-  // @ApiBearerAuth()
   async getAll(): Promise<ProductModelDTO[]> {
     try {
       return await this.dbListProduct.getAll();
@@ -62,7 +61,6 @@ export class ProductController {
     type: ProductPagModelDTO,
     isArray: true,
   })
-  // @ApiBearerAuth()
   async getAllPag(@Query() params): Promise<ProductPagModelDTO> {
     try {
       return await this.dbListPagProduct.getAllPag(params);
@@ -83,7 +81,6 @@ export class ProductController {
     status: HttpStatus.OK,
     type: ProductModelDTO,
   })
-  // @ApiBearerAuth()
   async create(
     @Body() payload: AddProductDTO,
   ): Promise<Product> {
@@ -104,7 +101,6 @@ export class ProductController {
     status: HttpStatus.OK,
     type: ProductModelDTO,
   })
-  // @ApiBearerAuth()
   async update(
     @Param('id') id: string,
     @Body() payload: AddProductDTO,
@@ -121,7 +117,6 @@ export class ProductController {
     description: 'Delete Product',
     status: HttpStatus.OK,
   })
-  // @ApiBearerAuth()
   async delete(@Param('id') id: string): Promise<void> {
     try {
       return await this.dbDeleteProduct.delete(id);
