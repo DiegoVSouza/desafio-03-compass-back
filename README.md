@@ -22,17 +22,21 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+[![Code Style: Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
+[![License: GPLv3](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
+
 # **Desafio 03**
 
 <br /><br />
 
-## Instalando depedencias
+> ## Instalando depedencias
 
 ```bash
 $ yarn
 ```
 
-## Rodando o App
+> ## Rodando o App
 
 ```bash
 # development
@@ -60,15 +64,10 @@ $ yarn run start:prod
 * Factory
 * Dependency Injection
 
-> ## Para todar esse projeto
+> ## Para rodar esse projeto
 
-* Node 20
 * YARN
+* Node 20
 * PostgreSQL
-
-[![Code Style: Standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-[![License: GPLv3](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
-
 
 Nest is [MIT licensed](LICENSE).
